@@ -37,7 +37,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
                         {product?.category?.charAt(0).toUpperCase() + product?.category?.slice(1)}
                     </Badge>
                 </div>
-
                 {/* Card Content */}
                 <CardHeader className="w-full">
                     <div className="w-[98%]"> {/* set fixed width as per card */}
@@ -45,15 +44,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
                             {product?.title}
                         </h3>
                     </div>
-
                     <StarRating rating={product?.rating || 0} />
                     <span className="text-xl font-bold">{product?.price}</span>
                 </CardHeader>
-
             </Link>
             {/* Footer Section */}
             <CardFooter className="flex gap-3">
-
                 {onFavoriteToggle && (
                     <div className="p-4 pt-0">
                         <Button

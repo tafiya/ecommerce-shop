@@ -7,8 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 import ThemeToggle from "../theme/ThemeToggle";
 import { RiMenu3Fill } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const Navbar = () => {
+    const favoriteCount = useSelector((state: RootState) => state.favorites.items.length)
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -41,8 +44,9 @@ const Navbar = () => {
                         className="block py-2 px-3 dark:text-white"
                     >
                         <div className="relative mx-auto w-fit">
-                            <Heart size={"2rem"} className="hover:text-[#5a3e52] dark:hover:text-gray-200  "></Heart>
-                            <span className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-500 text-center text-[10px] text-white">12</span>
+                            <Heart size={"1.8rem"} className="hover:text-[#5a3e52] dark:hover:text-gray-200  "></Heart>
+                            {favoriteCount > 0 && <span className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-500 text-center text-[10px] text-white">{favoriteCount}</span>}
+                            
                         </div>
                     </Link>
                     <ThemeToggle />
