@@ -15,7 +15,7 @@ export const StarRating = ({ rating }: StarRatingProps) => {
                 SVGstyle={{ display: "inline" }}
                 allowFraction // allows decimal ratings like 4.5
             />
-            <span className="text-sm text-gray-600 ml-1">{rating.toFixed(1)}</span>
+            <span className="text-sm text-gray-600 ml-1 dark:text-white">{rating.toFixed(1)}</span>
         </div>
     )
 }
