@@ -13,25 +13,25 @@ import { RootState } from "@/redux/store";
 const Navbar = () => {
     const favoriteCount = useSelector((state: RootState) => state.favorites.items.length)
     return (
-        <nav className="bg-white border-gray-200 dark:bg-gray-900">
+        <nav className="bg-white fixed w-full z-10 border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 {/* Logo */}
-                <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse">
+                <Link href="/" className="flex items-center space-x-1  md:space-x-2 rtl:space-x-reverse">
                     <Image
                         src="/logo.png"
                         alt="Flowbite Logo"
                         width={32}
                         height={32}
                     />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                    <span className="self-center text-lg md:text-2xl font-semibold whitespace-nowrap dark:text-white">
                         E-Commerce 
                     </span>
                 </Link>
 
 
-                <div className=" flex items-center md:space-x-6 space-x-2">
+                <div className=" flex items-center md:space-x-6 space-x-1">
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-4">
+                    <div className="hidden md:flex smd:pace-x-4">
 
                         <Link href="/create-product" className="block py-2 hover:text-[#5a3e52] dark:hover:text-gray-200 px-3 text-lg font-medium">
                             Create Product
@@ -44,7 +44,7 @@ const Navbar = () => {
                         className="block py-2 px-3 dark:text-white"
                     >
                         <div className="relative mx-auto w-fit">
-                            <Heart size={"1.8rem"} className="hover:text-[#5a3e52] dark:hover:text-gray-200  "></Heart>
+                            <Heart size={"1.7rem"} className="hover:text-[#5a3e52] dark:hover:text-gray-200  "></Heart>
                             {favoriteCount > 0 && <span className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-500 text-center text-[10px] text-white">{favoriteCount}</span>}
                             
                         </div>

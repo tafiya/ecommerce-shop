@@ -6,7 +6,7 @@ import axios from "axios";
 // Fetch product data
 const getProduct = async (id: string): Promise<IProduct> => {
     try {
-        // const res = await axios.get(`https://dummyjson.com/products/${id}`);
+        const res = await axios.get(`https://dummyjson.com/products/${id}`);
         return res.data;
     } catch (error) {
         console.error("Failed to fetch product:", error);

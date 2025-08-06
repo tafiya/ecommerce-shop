@@ -17,11 +17,11 @@ const ThemeToggle:FC =()=> {
               className="sr-only"
           />
           <div
-              className={`w-16 h-8 flex items-center rounded-full p-1 transition-colors duration-300 ${mode === "dark" ? "bg-gray-700" : "bg-gray-300"
+              className={`md:w-16 w-14 h-6 md:h-8 flex items-center rounded-full p-1 transition-colors duration-300 ${mode === "dark" ? "bg-gray-700" : "bg-gray-300"
                   }`}
           >
               <div
-                  className={`w-8 h-8 bg-white relative -left-1 top-0 rounded-full shadow-md flex items-center justify-center transform transition-transform duration-300 ${mode === "dark" ? "translate-x-8" : "translate-x-0"
+                  className={`md:w-8 w-6 h-6 md:h-8 bg-white relative -left-1 top-0 rounded-full shadow-md flex items-center justify-center transform transition-transform duration-300 ${mode === "dark" ? "translate-x-8" : "translate-x-0"
                       }`}
               >
                   {mode === "dark" ? (

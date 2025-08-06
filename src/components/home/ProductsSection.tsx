@@ -76,15 +76,18 @@ console.log(filteredProducts)
     return (
         <main className="min-h-screen bg-gray-50 dark:bg-zinc-900 py-6">
             {/* Search Bar */}
-            <div className="p-4 flex justify-center">
+            <div className="my-8 flex justify-center">
+            <div className="max-w-md w-full h-[50px] px-1.5 flex items-center justify-center bg-gradient-to-b from-[#e3d5ff] to-[#ffe7e7] rounded-xl shadow-md cursor-pointer">
                 <input
                     type="text"
-                    placeholder="Search products by title..."
+                    placeholder="Search.."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full max-w-md px-4 py-2 border border-gray-300 dark:border-zinc-700 rounded shadow bg-white dark:bg-zinc-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="max-w-md w-full h-[40px] rounded-xl px-4 text-[13.4px] tracking-[0.8px] text-gray-900 bg-white focus:outline-none caret-orange-500"
                 />
             </div>
+            </div>
+
 
             {/* Product Grid */}
             <div className="mx-auto max-w-7xl px-4">
