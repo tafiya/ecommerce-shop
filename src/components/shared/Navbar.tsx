@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import ThemeToggle from "../theme/ThemeToggle";
 
 
 const Navbar = () => {
@@ -24,58 +25,62 @@ const Navbar = () => {
                     </span>
                 </Link>
 
-                {/* Mobile Menu Button */}
-                <div className="md:hidden">
-                    <Sheet>
-                        <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon">
-                                <Menu className="h-6 w-6" />
-                            </Button>
-                        </SheetTrigger>
-                        <SheetContent side="right" className="w-64">
-                            <SheetHeader>
-                                <SheetTitle>Menu</SheetTitle>
-                            </SheetHeader>
-                            <ul className="space-y-4 mt-4">
-                                <li>
-                                    <Link
-                                        href="/favorite"
-                                        className="block py-2 px-3 dark:text-white"
-                                    >
-                                        Favorite
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/create-product" className="block py-2 px-3">
-                                        Create Product
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/services" className="block py-2 px-3">
-                                        light
-                                    </Link>
-                                </li>
-                            </ul>
-                        </SheetContent>
-                    </Sheet>
-                </div>
+            
+<div className=" flex">
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex space-x-2">
+                        <Link
+                            href="/favorite"
+                            className="block py-2 px-3 dark:text-white"
+                        >
+                            Favorite
+                        </Link>
+                        <Link href="/create-product" className="block py-2 px-3">
+                            Create Product
+                        </Link>
+                        <Link href="/services" className="block py-2 px-3">
+                            light
+                        </Link>
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex space-x-2">
-                    <Link
-                        href="/favorite"
-                        className="block py-2 px-3 dark:text-white"
-                    >
-                        Favorite
-                    </Link>
-                    <Link href="/create-product" className="block py-2 px-3">
-                        Create Product
-                    </Link>
-                    <Link href="/services" className="block py-2 px-3">
-                        light
-                    </Link>
-                
-                </div>
+                    </div>
+                    <ThemeToggle />
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden">
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <Button variant="ghost" size="icon">
+                                    <Menu size={"4rem"} className="h-20 w-20" />
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent side="right" className="w-64">
+                                <SheetHeader>
+                                    <SheetTitle>Menu</SheetTitle>
+                                </SheetHeader>
+                                <ul className="space-y-4 mt-4">
+                                    <li>
+                                        <Link
+                                            href="/favorite"
+                                            className="block py-2 px-3 dark:text-white"
+                                        >
+                                            Favorite
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/create-product" className="block py-2 px-3">
+                                            Create Product
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/services" className="block py-2 px-3">
+                                            light
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </SheetContent>
+                        </Sheet>
+                    </div>
+</div>
+
             </div>
         </nav>
     );
