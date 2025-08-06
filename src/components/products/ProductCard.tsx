@@ -4,63 +4,76 @@ import Image from 'next/image';
 import { Camera, Heart, ShoppingCart, Star } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 import { Badge } from '../ui/badge';
+import { IProduct } from '@/types';
+import Link from 'next/link';
+import { StarRating } from '../StarRating';
 
-const ProductCard = () => {
+interface ProductCardProps {
+    product: IProduct;
+    isFavorite?: boolean;
+    onFavoriteToggle?: (product: IProduct) => void;
+    refCallback?: (node: HTMLDivElement | null) => void;
+}
+const ProductCard: React.FC<ProductCardProps> = ({
+    product,
+    isFavorite,
+    onFavoriteToggle,
+    refCallback,
+}) => {
+
     return (
-        <Card className="w-[350px] rounded-2xl shadow-md overflow-hidden">
-            {/* Image Section */}
-            <div className="relative w-full h-[200px]">
-                <Image
-                    src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" // replace with actual image path
-                    alt="Red Hat"
-                    fill
-                    className="object-cover"
-                />
-                <Badge className="absolute top-3 right-3 bg-gray-100 text-gray-800">
-                    Clothing
-                </Badge>
-            </div>
-
-            {/* Card Content */}
-            <CardHeader>
-                <div className=' flex justify-between items-center'>
-                    <h3 className="text-lg font-bold">Red Hat</h3>
-                    <span className="text-xl font-bold">$28.99</span>
-                </div>
-
-                <div className="flex items-center gap-1">
-                    {[...Array(4)].map((_, i) => (
-                        <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
-                    ))}
-                    <Star size={16} className="text-gray-300" />
-                    <span className="text-sm text-gray-600 ml-1">(4.5)</span>
-                </div>
-
-            </CardHeader>
-
-            <CardContent>
-                <div className="flex items-center justify-between">
-                   
-                    <Badge variant="outline" className="text-green-600 border-green-600">
-                        In Stock
+        <Card ref={refCallback}
+            className="rounded-2xl shadow-md overflow-hidden group cursor-pointer hover:shadow-lg transition  py-0 pb-6">
+            <Link href={`/product/${product?.id}`}>
+                {/* Image Section */}
+                <div className="relative w-full aspect-[4/3] ">
+                    <Image
+                        src={product?.thumbnail} // replace with actual image path
+                        alt={product?.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <Badge className="absolute top-3 right-3 border border-[#b8a2b1] bg-[#ded5da] text-[#5a3e52]">
+                        {product?.category?.charAt(0).toUpperCase() + product?.category?.slice(1)}
                     </Badge>
                 </div>
-            </CardContent>
 
+                {/* Card Content */}
+                <CardHeader className="w-full">
+                    <div className="w-[98%]"> {/* set fixed width as per card */}
+                        <h3 className="text-lg text-start font-bold truncate">
+                            {product?.title}
+                        </h3>
+                    </div>
+
+                    <StarRating rating={product?.rating || 0} />
+                    <span className="text-xl font-bold">{product?.price}</span>
+                </CardHeader>
+
+            </Link>
             {/* Footer Section */}
             <CardFooter className="flex gap-3">
-             
-                {/* <div className="flex gap-3"> */}
-                    <Button variant="outline" size="icon" className="rounded-lg">
-                        <Heart size={18} />
-                    </Button>
-                    <Button variant="outline" size="icon" className="rounded-lg">
-                        <Camera size={18} />
-                    </Button>
-                {/* </div> */}
-                <Button className=" flex gap-2">
-                    <ShoppingCart size={16} /> Add to Cart
-                </Button>
+
+                {onFavoriteToggle && (
+                    <div className="p-4 pt-0">
+                        <Button
+                            variant={isFavorite ? "destructive" : "outline"}
+                            className="w-full flex items-center gap-2"
+                            onClick={e => {
+                                e.preventDefault();
+                                onFavoriteToggle(product);
+                            }}
+                        >
+                            <Heart
+                                size={18}
+                                fill={isFavorite ? "red" : "none"}
+                                color={isFavorite ? "white" : "currentColor"}
+                                className="transition-colors"
+                            />
+                            {isFavorite ? "Unfavorite" : "Favorite"}
+                        </Button>
+                    </div>
+                )}
             </CardFooter>
         </Card>
     );

@@ -1,13 +1,11 @@
-import ProductCard from "@/components/products/ProductCard";
-import { Button } from "@/components/ui/button";
-
-
+import Banner from "@/components/home/Banner";
+import ProductsSection from "@/components/home/ProductsSection";
 export default function Home() {
   return (
-<div>
-   <h2 className=" text-2xl"> Hello</h2>
-   <Button> hi</Button>
-   <ProductCard></ProductCard>
-</div>
+    <div>
+
+      <Banner></Banner>
+      <ProductsSection></ProductsSection>
+    </div>
   );
 }
