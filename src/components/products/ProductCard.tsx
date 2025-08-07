@@ -49,12 +49,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 </CardHeader>
             </Link>
             {/* Footer Section */}
-            <CardFooter className="flex gap-3">
+            <CardFooter className="">
                 {onFavoriteToggle && (
-                    <div className="p-4 pt-0">
+                    <div className="px-4 pt-0 w-full">
                         <Button
-                            variant={isFavorite ? "destructive" : "outline"}
-                            className="w-full flex items-center gap-2"
+                            variant={isFavorite ? "outline" : "outline"}
+                            className={`w-full flex items-center hover:text-red-600 hover:border-red-600 gap-2 ${isFavorite?" border-red-600 text-red-600 bg-red-50":""}`}
                             onClick={e => {
                                 e.preventDefault();
                                 onFavoriteToggle(product);

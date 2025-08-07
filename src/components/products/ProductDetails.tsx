@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Heart, Trash2 } from "lucide-react";
 import axios from "axios";
-import { AlertDialog, AlertDialogTrigger, AlertDialogDescription, AlertDialogTitle,AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "../ui/alert-dialog";
+import { AlertDialog, AlertDialogTrigger, AlertDialogDescription, AlertDialogTitle, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "../ui/alert-dialog";
 import { IProduct } from "@/types";
 import { RootState } from "@/redux/store";
 import { toggleFavorite } from "@/redux/favoriteSlice";
@@ -56,20 +56,21 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
     };
 
     return (
-        <div className="p-4 max-w-2xl mx-auto">
-            <h1 className="text-2xl font-bold mb-2">{currentProduct?.title}</h1>
-            <p className="text-sm text-gray-500 mb-4">{currentProduct?.description}</p>
-            <div className="flex gap-6 flex-col md:flex-row">
-                <div className="flex-shrink-0">
+        <div className="p-4 max-w-2xl mx-auto h-full flex items-center justify-center ">
+
+            <div className="flex gap-6  flex-col md:flex-row">
+                <div className="flex-shrink-0 border">
                     <Image
                         src={currentProduct?.images[0]}
                         alt={currentProduct?.title}
-                        width={256}
-                        height={256}
+                        width={300}
+                        height={300}
                         className="rounded object-cover"
                     />
                 </div>
                 <div>
+                    <h1 className="text-2xl font-bold mb-2">{currentProduct?.title}</h1>
+                    <p className="text-sm text-gray-500 mb-4">{currentProduct?.description}</p>
                     <p className="text-lg font-semibold mb-2">Price: ${currentProduct?.price}</p>
                     <p className="mb-1">Brand: {currentProduct?.brand}</p>
                     <p className="mb-1">Stock: {currentProduct?.stock}</p>
@@ -92,14 +93,16 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
 
                     <div className="flex gap-3 mt-6">
                         <Button
-                            variant={isFavorite ? "destructive" : "outline"}
+                            variant={isFavorite ? "outline" : "outline"}
+                            className={`flex items-center hover:text-red-600 hover:border-red-600 gap-2 ${isFavorite ? " border-red-600 text-red-600 bg-red-50" : ""}`}
                             onClick={handleFavorite}
-                            className="flex items-center gap-2"
+
                         >
                             <Heart
                                 size={18}
                                 fill={isFavorite ? "red" : "none"}
                                 color={isFavorite ? "white" : "currentColor"}
+                                className="transition-colors"
                             />
                             {isFavorite ? "Unfavorite" : "Favorite"}
                         </Button>

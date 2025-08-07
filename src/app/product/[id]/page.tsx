@@ -23,7 +23,9 @@ const page = async ({ params }: PageProps) => {
     const resolvedParams = await params;
     const product = await getProduct(resolvedParams.id);
 
-    return <ProductDetails product={product} />;
+    return(<div className="h-[80vh] flex items-center justify-center">
+        <ProductDetails product={product} />
+        </div>)  
 };
 
 export default page;
