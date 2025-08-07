@@ -48,4 +48,36 @@ A fully responsive and modern eCommerce web application built using **Next.js**,
 - Add a new product through a form
 - Toast notification upon successful creation
 
+## ⚙️ Getting Started
 
+### 📦 Prerequisites
+
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [Git](https://git-scm.com/)
+- [pnpm](https://pnpm.io/) or [npm](https://www.npmjs.com/)
+
+### 🚀 Installation
+
+#### 1. Clone the repository
+
+```bash
+git clone https://github.com/tafiya/ecommerce-shop.git
+cd ecommerce-shop
+```
+
+### 📦 2. Install Dependencies
+
+```bash
+npm install
+# or
+pnpm install
+
+```
+### 🚀 3.Run the Development Server
+
+```bash
+npm run dev
+# or
+pnpm dev
+```
