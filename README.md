@@ -1,4 +1,4 @@
-#  Modern eCommerce Web Application
+# eCommerce Shop
 
 A fully responsive and modern eCommerce web application built using **Next.js**, **TypeScript**, **Tailwind CSS**, and **Redux Toolkit**. It provides a smooth and interactive product browsing experience powered by the [DummyJSON API](https://dummyjson.com/).
 
