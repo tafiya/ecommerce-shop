@@ -28,7 +28,7 @@ const CreateProduct: FC = () => {
     } = useForm<FormValues>({
         defaultValues,
     });
-
+// preate product function
     const onSubmit = async (data: FormValues) => {
         try {
             const res = await axios.post(
@@ -62,7 +62,7 @@ const CreateProduct: FC = () => {
             backdropFilter: "blur(5px)",
             WebkitBackdropFilter: "blur(5px)",
             boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-}} className="max-w-xl mx-auto mt-10 p-6  rounded-lg shadow 
+        }} className="max-w-xl mx-auto mt-10 p-6  rounded-lg shadow 
  text-gray-900 
 00 dark:text-gray-100"
         >
@@ -74,7 +74,7 @@ const CreateProduct: FC = () => {
                         <input
                             type="text"
                             {...register("title", { required: "Title is required" })}
-                            className="w-full border rounded px-3 py-1.5 bg-white dark:bg-slate-800 text-gray-900 dark:bg-zinc-800 dark:text-gray-100 dark:border-zinc-600"
+                            className="w-full border rounded px-3 py-1.5 bg-white  text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-zinc-500"
                         />
                         {errors.title && <span className="text-red-500 text-sm">{errors.title.message}</span>}
                     </div>
@@ -83,7 +83,7 @@ const CreateProduct: FC = () => {
                         <input
                             type="text"
                             {...register("brand", { required: "Brand is required" })}
-                            className="w-full border rounded px-3 py-1.5 bg-white text-gray-900 dark:bg-zinc-800 dark:text-gray-100 dark:border-zinc-600"
+                            className="w-full border rounded px-3 py-1.5 bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-zinc-500"
                         />
                         {errors.brand && <span className="text-red-500 text-sm">{errors.brand.message}</span>}
                     </div>
@@ -94,7 +94,7 @@ const CreateProduct: FC = () => {
                         <input
                             type="text"
                             {...register("category", { required: "Category is required" })}
-                            className="w-full border rounded px-3 py-1.5 bg-white text-gray-900 dark:bg-zinc-800 dark:text-gray-100 dark:border-zinc-600"
+                            className="w-full border rounded px-3 py-1.5 bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-zinc-500"
                         />
                         {errors.category && <span className="text-red-500 text-sm">{errors.category.message}</span>}
                     </div>
@@ -108,7 +108,7 @@ const CreateProduct: FC = () => {
                                 min: { value: 0, message: "Price must be at least 0" },
                                 valueAsNumber: true,
                             })}
-                            className="w-full border rounded px-3 py-1.5 bg-white text-gray-900 dark:bg-zinc-800 dark:text-gray-100 dark:border-zinc-600"
+                            className="w-full border rounded px-3 py-1.5 bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-zinc-500"
                         />
                         {errors.price && <span className="text-red-500 text-sm">{errors.price.message}</span>}
                     </div>
@@ -117,7 +117,7 @@ const CreateProduct: FC = () => {
                     <label className="block font-medium mb-1 text-gray-700 dark:text-gray-200">Description</label>
                     <textarea
                         {...register("description", { required: "Description is required" })}
-                        className="w-full border rounded px-3 py-2 bg-white text-gray-900 dark:bg-zinc-800 dark:text-gray-100 dark:border-zinc-600"
+                        className="w-full border rounded px-3 py-2 bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-zinc-500"
                     />
                     {errors.description && <span className="text-red-500 text-sm">{errors.description.message}</span>}
                 </div>
@@ -131,7 +131,7 @@ const CreateProduct: FC = () => {
                             min: { value: 0, message: "Stock must be at least 0" },
                             valueAsNumber: true,
                         })}
-                        className="w-full border rounded px-3 py-1.5 bg-white text-gray-900 dark:bg-zinc-800 dark:text-gray-100 dark:border-zinc-600"
+                        className="w-full border rounded px-3 py-1.5 bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-zinc-500"
                     />
                     {errors.stock && <span className="text-red-500 text-sm">{errors.stock.message}</span>}
                 </div>
@@ -139,7 +139,7 @@ const CreateProduct: FC = () => {
 
                 <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition dark:bg-blue-500 dark:hover:bg-blue-600"
+                    className="w-full bg-[#5a3e52] text-white py-2 rounded hover:bg-[#87617c] transition dark:bg-[#ab7d9d] dark:hover:bg-[#87617c] "
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? "Creating..." : "Create Product"}

@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
     return (
         <Card ref={refCallback}
-            className="rounded-2xl shadow-md overflow-hidden group cursor-pointer hover:shadow-lg transition  py-0 pb-6">
+            className="rounded-2xl shadow-md overflow-hidden group cursor-pointer hover:shadow-lg hover:dark:shadow-gray-400 transition dark:bg-slate-800 py-0 pb-6">
             <Link href={`/product/${product?.id}`}>
                 {/* Image Section */}
                 <div className="relative w-full aspect-[4/3] ">
@@ -54,7 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     <div className="px-4 pt-0 w-full">
                         <Button
                             variant={isFavorite ? "outline" : "outline"}
-                            className={`w-full flex items-center hover:text-red-600 hover:border-red-600 gap-2 ${isFavorite?" border-red-600 text-red-600 bg-red-50":""}`}
+                            className={`w-full flex items-center hover:dark:border-red-600 hover:text-red-600 hover:border-red-600 gap-2 ${isFavorite ?"dark:border-red-60 border-red-600 text-red-600 bg-red-50 ":""}`}
                             onClick={e => {
                                 e.preventDefault();
                                 onFavoriteToggle(product);

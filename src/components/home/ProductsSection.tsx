@@ -6,6 +6,7 @@ import ProductCard from "../products/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { toggleFavorite } from "@/redux/favoriteSlice";
+import Spinner from "../Spinner";
 
 const LIMIT = 10;
 const ProductsSection: FC = () => {
@@ -72,20 +73,21 @@ const ProductsSection: FC = () => {
         fetchProducts();
         // eslint-disable-next-line
     }, []);
-console.log(filteredProducts)
+
     return (
-        <main className="min-h-screen bg-gray-50 dark:bg-zinc-900 py-6">
+        <main className="min-h-screen py-6">
             {/* Search Bar */}
             <div className="my-8 flex justify-center">
-            <div className="max-w-md w-full h-[50px] px-1.5 flex items-center justify-center bg-gradient-to-b from-[#e3d5ff] to-[#ffe7e7] rounded-xl shadow-md cursor-pointer">
-                <input
-                    type="text"
-                    placeholder="Search.."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                        className="max-w-md w-full h-[40px] rounded-xl px-4 text-[13.4px] tracking-[0.8px] text-gray-900 bg-white focus:outline-none caret-orange-500"
-                />
-            </div>
+                <div className="max-w-md w-full h-[50px] px-1.5 flex items-center justify-center bg-gradient-to-b from-[#e3d5ff] to-[#ffe7e7] rounded-xl shadow-md cursor-pointer">
+                    <input
+                        type="text"
+                        placeholder="Search.."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="max-w-md w-full h-[40px] rounded-xl px-4 text-[13.4px] tracking-[0.8px] text-gray-900 bg-white dark:bg-gray-700 
+                        dark:text-white focus:outline-none caret-orange-500"
+                    />
+                </div>
             </div>
 
 
@@ -106,7 +108,7 @@ console.log(filteredProducts)
                         );
                     })}
                 </div>
-                {loading && <div className="text-center p-4">Loading more products...</div>}
+                {loading && <Spinner></Spinner>}
                 {error && <div className="text-center text-red-500 p-4">{error}</div>}
                 {!hasMore && !loading && (
                     <div className="text-center p-4 text-gray-500">No more products.</div>

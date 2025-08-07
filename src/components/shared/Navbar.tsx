@@ -13,7 +13,7 @@ import { RootState } from "@/redux/store";
 const Navbar = () => {
     const favoriteCount = useSelector((state: RootState) => state.favorites.items.length)
     return (
-        <nav className="bg-white fixed w-full z-10 border-gray-200 dark:bg-gray-900">
+        <nav className="bg-white fixed w-full z-10 border-gray-200 dark:bg-gray-800">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-1  md:space-x-2 rtl:space-x-reverse">

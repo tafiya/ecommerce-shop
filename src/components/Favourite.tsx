@@ -19,7 +19,7 @@ const FavouritePage: React.FC = () => {
     const isEmpty = !favorites || favorites.length === 0;
 
     return (
-        <main className="p-4 min-h-screen bg-gray-50 dark:bg-zinc-900">
+        <main className="p-4 min-h-screen bg-gray-50 dark:bg-slate-900">
             {isEmpty ? (
                 <div className="flex flex-col items-center justify-center min-h-[60vh]">
                     <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100 text-center">

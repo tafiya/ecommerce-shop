@@ -23,7 +23,7 @@ const page = async ({ params }: PageProps) => {
     const resolvedParams = await params;
     const product = await getProduct(resolvedParams.id);
 
-    return(<div className="h-[80vh] flex items-center justify-center">
+    return (<div className=" bg-gray-50 dark:bg-slate-900 flex items-center md:py-0 my-16 justify-center">
         <ProductDetails product={product} />
         </div>)  
 };

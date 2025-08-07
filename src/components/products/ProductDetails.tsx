@@ -11,17 +11,16 @@ import { IProduct } from "@/types";
 import { RootState } from "@/redux/store";
 import { toggleFavorite } from "@/redux/favoriteSlice";
 import { EditProductModal } from "./EditProductModal";
-
+import toast from "react-hot-toast";
 
 const ProductDetails = ({ product }: { product: IProduct }) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const favorites = useSelector((state: RootState) => state.favorites.items);
-
     const [currentProduct, setCurrentProduct] = useState<IProduct>(product);
     const [deleting, setDeleting] = useState<boolean>(false);
     const [deleteError, setDeleteError] = useState<string | null>(null);
-
+    // get favorite product function
     const getFavoriteProduct = (product: IProduct): IProduct => ({
         ...product,
         id: product.id,
@@ -37,18 +36,21 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
     const handleFavorite = () => {
         dispatch(toggleFavorite(getFavoriteProduct(currentProduct)));
     };
-
+    // product delete function
     const handleDelete = async () => {
         setDeleting(true);
         setDeleteError(null);
         try {
             await axios.delete(`https://dummyjson.com/products/${currentProduct.id}`);
+            toast.success("Product deleted successfully.");
             router.push("/");
         } catch (err: unknown) {
             if (axios.isAxiosError(err)) {
                 setDeleteError(err.response?.data?.message || err.message);
+                toast.error("Failed to update product",)
             } else {
                 setDeleteError("Failed to delete product.");
+                toast.error("Failed to update product",)
             }
         } finally {
             setDeleting(false);
@@ -56,10 +58,9 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
     };
 
     return (
-        <div className="p-4 max-w-2xl mx-auto h-full flex items-center justify-center ">
-
+        <div className="p-4   max-w-2xl mx-auto h-full flex items-center justify-center ">
             <div className="flex gap-6  flex-col md:flex-row">
-                <div className="flex-shrink-0 border">
+                <div className="flex-shrink-0 border rounded-lg shadow-md shadow-gray-400">
                     <Image
                         src={currentProduct?.images[0]}
                         alt={currentProduct?.title}
@@ -92,6 +93,7 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
                     )}
 
                     <div className="flex gap-3 mt-6">
+                        {/* add to favorite button */}
                         <Button
                             variant={isFavorite ? "outline" : "outline"}
                             className={`flex items-center hover:text-red-600 hover:border-red-600 gap-2 ${isFavorite ? " border-red-600 text-red-600 bg-red-50" : ""}`}
@@ -106,12 +108,12 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
                             />
                             {isFavorite ? "Unfavorite" : "Favorite"}
                         </Button>
-
+                        {/* edit button */}
                         <EditProductModal
                             product={currentProduct}
                             onProductUpdate={setCurrentProduct}
                         />
-
+                        {/* delete button */}
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
                                 <Button
@@ -123,7 +125,7 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
                                     {deleting ? "Deleting..." : "Delete"}
                                 </Button>
                             </AlertDialogTrigger>
-                            <AlertDialogContent>
+                            <AlertDialogContent className="dark:bg-slate-900">
                                 <AlertDialogHeader>
                                     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                                     <AlertDialogDescription>

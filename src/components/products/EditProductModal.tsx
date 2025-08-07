@@ -32,7 +32,7 @@ export const EditProductModal = ({
     ) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
-
+    // edit function
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -68,7 +68,7 @@ export const EditProductModal = ({
             setLoading(false);
         }
     };
-
+    // fetch the existin info
     useEffect(() => {
         setForm({
             title: product.title,
@@ -83,12 +83,12 @@ export const EditProductModal = ({
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="secondary" className="flex items-center gap-2">
+                <Button variant="outline" className="flex items-center gap-2">
                     <Pencil size={18} />
                     Edit
                 </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="dark:bg-slate-900">
                 <DialogHeader>
                     <DialogTitle>Edit Product</DialogTitle>
                 </DialogHeader>
