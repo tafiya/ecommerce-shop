@@ -4,7 +4,7 @@ A fully responsive and modern eCommerce web application built using **Next.js**,
 
 ## 🔗 Live Demo
 
-[View Live](https://your-live-demo-link.com) <!-- Replace with your actual deployed URL -->
+[View Live](https://ecommerce-shop-project-five.vercel.app/) <!-- Replace with your actual deployed URL -->
 
 ---
 
