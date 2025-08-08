@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# eCommerce Shop
 
-## Getting Started
+A fully responsive and modern eCommerce web application built using **Next.js**, **TypeScript**, **Tailwind CSS**, and **Redux Toolkit**. It provides a smooth and interactive product browsing experience powered by the [DummyJSON API](https://dummyjson.com/).
 
-First, run the development server:
+## 🔗 Live Demo
+
+[View Live](https://ecommerce-shop-project-five.vercel.app/) <!-- Replace with your actual deployed URL -->
+
+---
+
+## 🔧 Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
+- **State Management:** Redux Toolkit
+- **API:** [DummyJSON](https://dummyjson.com/)
+- **HTTP Client:** Axios
+---
+
+## ✨ Features
+
+### 🏠 Homepage (`/`)
+- **Responsive Navbar** with:
+  - Link to **Favorites** page
+  - Link to **Create Product**
+  - **Dark/Light Mode** toggle
+- **Search Bar** to filter products in real-time
+- **Product Listing** with:
+  - On-scroll Pagination (`?limit=10&skip=10`)
+  - Product Card view
+  - Favorite/Unfavorite toggle with heart icon
+  - Clickable cards to view detailed product info
+
+### 💖 Favorites (`/favourite`)
+- View a list of all favorited products
+- Easily unfavorite any product
+
+### 🔍 Product Details (`/product/[id]`)
+- Each product opens in a **dynamic route**
+- View complete product details
+- **Edit** product using a modal dialog
+- **Delete** product with a confirmation popup
+- **Toast notifications** for feedback
+
+### ➕ Create Product (`/create-product`)
+- Add a new product through a form
+- Toast notification upon successful creation
+
+## ⚙️ Getting Started
+
+### 📦 Prerequisites
+
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [Git](https://git-scm.com/)
+- [pnpm](https://pnpm.io/) or [npm](https://www.npmjs.com/)
+
+### 🚀 Installation
+
+#### 1. Clone the repository
+
+```bash
+git clone https://github.com/tafiya/ecommerce-shop.git
+cd ecommerce-shop
+```
+
+### 📦 2. Install Dependencies
+
+```bash
+npm install
+# or
+pnpm install
+
+```
+### 🚀 3.Run the Development Server
 
 ```bash
 npm run dev
 # or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
