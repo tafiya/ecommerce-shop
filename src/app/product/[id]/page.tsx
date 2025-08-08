@@ -1,5 +1,5 @@
 import ProductDetails from "@/components/products/ProductDetails";
-import { IProduct } from "@/types";
+import { IProduct, PageProps } from "@/types";
 import axios from "axios";
 
 
@@ -15,9 +15,6 @@ const getProduct = async (id: string): Promise<IProduct> => {
 };
 
 
-interface PageProps {
-    params: Promise<{ id: string }>;
-}
 
 const page = async ({ params }: PageProps) => {
     const resolvedParams = await params;

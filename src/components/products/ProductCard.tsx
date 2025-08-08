@@ -4,16 +4,11 @@ import Image from 'next/image';
 import { Camera, Heart, ShoppingCart, Star } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 import { Badge } from '../ui/badge';
-import { IProduct } from '@/types';
+import { IProduct, ProductCardProps } from '@/types';
 import Link from 'next/link';
 import { StarRating } from '../StarRating';
 
-interface ProductCardProps {
-    product: IProduct;
-    isFavorite?: boolean;
-    onFavoriteToggle?: (product: IProduct) => void;
-    refCallback?: (node: HTMLDivElement | null) => void;
-}
+
 const ProductCard: React.FC<ProductCardProps> = ({
     product,
     isFavorite,

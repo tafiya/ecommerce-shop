@@ -1,7 +1,7 @@
 import FavouritePage from '@/components/Favourite';
-import React from 'react';
+import React, { FC } from 'react';
 
-const page = () => {
+const Favorite:FC = () => {
     return (
         <div>
             <FavouritePage></FavouritePage>
@@ -9,4 +9,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Favorite;

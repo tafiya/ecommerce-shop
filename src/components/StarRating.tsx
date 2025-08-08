@@ -1,10 +1,6 @@
 "use client"
+import { StarRatingProps } from "@/types"
 import { Rating } from "react-simple-star-rating"
-
-interface StarRatingProps {
-    rating: number
-}
-
 export const StarRating = ({ rating }: StarRatingProps) => {
     return (
         <div className="flex items-center gap-1">

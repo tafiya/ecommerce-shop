@@ -1,8 +1,6 @@
 import { IProduct } from '@/types';
+import { FavoriteState } from '@/types/favorite';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-interface FavoriteState {
-    items: IProduct[];
-}
 const initialState: FavoriteState = {
     items: [],
 };

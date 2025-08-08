@@ -1,7 +1,8 @@
 import Image from "next/image";
 import load from "../assets/loading.gif";
+import { FC } from "react";
 
-const loading = () => {
+const loading:FC = () => {
     return (
         <div className=" flex justify-center items-center border h-screen">
             <Image

@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import toast from "react-hot-toast";
+import { updateProductApi } from "@/lib/api";
 export const EditProductModal = ({
     product,
     onProductUpdate,
@@ -37,6 +38,7 @@ export const EditProductModal = ({
         e.preventDefault();
         setLoading(true);
         setError(null);
+
         try {
             const payload = {
                 ...form,
@@ -44,15 +46,9 @@ export const EditProductModal = ({
                 stock: Number(form.stock),
             };
 
-            const res = await axios.patch(
-                `https://dummyjson.com/products/${product.id}`,
-                payload,
-                {
-                    headers: { "Content-Type": "application/json" },
-                }
-            );
+            const updatedProduct = await updateProductApi(product.id, payload);
 
-            onProductUpdate(res.data);
+            onProductUpdate(updatedProduct);
             setOpen(false);
             toast.success("Product updated successfully.");
         } catch (err: unknown) {
@@ -67,7 +63,7 @@ export const EditProductModal = ({
         } finally {
             setLoading(false);
         }
-    };
+    }
     // fetch the existin info
     useEffect(() => {
         setForm({

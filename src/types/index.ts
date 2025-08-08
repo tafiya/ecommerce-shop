@@ -5,10 +5,9 @@ export interface IReview {
     reviewerName: string;
     reviewerEmail: string;
 }
-export type Theme = 'light' | 'dark';
 
-export interface ThemeState {
-    mode: Theme;
+export interface PageProps {
+    params: Promise<{ id: string }>;
 }
 export type FormValues = {
     title: string;
@@ -52,5 +51,13 @@ export interface IProduct {
     images: string[];
     thumbnail: string;
 }
+export interface ProductCardProps {
+    product: IProduct;
+    isFavorite?: boolean;
+    onFavoriteToggle?: (product: IProduct) => void;
+    refCallback?: (node: HTMLDivElement | null) => void;
+}
 
-
+export interface StarRatingProps {
+    rating: number
+}

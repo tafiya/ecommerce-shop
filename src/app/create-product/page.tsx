@@ -1,12 +1,12 @@
 import CreateProduct from '@/components/products/CreateProduct';
-import React from 'react';
+import React, { FC } from 'react';
 
-const page = () => {
+const CreatePage:FC = () => {
     return (
-        <div>
+        <div className=' md:p-0 p-4'>
             <CreateProduct></CreateProduct>
         </div>
     );
 };
 
-export default page;
+export default CreatePage;

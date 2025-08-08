@@ -1,62 +1,36 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
-import ThemeToggle from "../theme/ThemeToggle";
 import { RiMenu3Fill } from "react-icons/ri";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
-    const favoriteCount = useSelector((state: RootState) => state.favorites.items.length)
     return (
         <nav className="bg-white fixed w-full z-10 border-gray-200 dark:bg-gray-800">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 {/* Logo */}
-                <Link href="/" className="flex items-center space-x-1  md:space-x-2 rtl:space-x-reverse">
-                    <Image
-                        src="/logo.png"
-                        alt="Flowbite Logo"
-                        width={32}
-                        height={32}
-                    />
+                <Link
+                    href="/"
+                    className="flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+                >
+                    <Image src="/logo.png" alt="Flowbite Logo" width={32} height={32} />
                     <span className="self-center text-lg md:text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        E-Commerce 
+                        E-Commerce
                     </span>
                 </Link>
 
+                <div className="flex items-center md:space-x-6 space-x-1">
+                    {/* CSR Links */}
+                    <NavLinks />
 
-                <div className=" flex items-center md:space-x-6 space-x-1">
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex smd:pace-x-4">
-
-                        <Link href="/create-product" className="block py-2 hover:text-[#5a3e52] dark:hover:text-gray-200 px-3 text-lg font-medium">
-                            Create Product
-                        </Link>
-
-
-                    </div>
-                    <Link
-                        href="/favorite"
-                        className="block py-2 px-3 dark:text-white"
-                    >
-                        <div className="relative mx-auto w-fit">
-                            <Heart size={"1.7rem"} className="hover:text-[#5a3e52] dark:hover:text-gray-200  "></Heart>
-                            {favoriteCount > 0 && <span className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-500 text-center text-[10px] text-white">{favoriteCount}</span>}
-                            
-                        </div>
-                    </Link>
-                    <ThemeToggle />
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">
                         <Sheet>
                             <SheetTrigger asChild>
                                 <Button variant="ghost" size="icon">
                                     <RiMenu3Fill size={"2.5rem"} />
-                                    {/* <Menu size={"4rem"} className="h-20 w-20" /> */}
                                 </Button>
                             </SheetTrigger>
                             <SheetContent side="right" className="w-64">
@@ -65,7 +39,10 @@ const Navbar = () => {
                                 </SheetHeader>
                                 <ul className="space-y-4 mt-4">
                                     <li>
-                                        <Link href="/create-product" className="block py-2 hover:text-[#5a3e52] dark:hover:text-gray-200 px-3 text-lg font-medium">
+                                        <Link
+                                            href="/create-product"
+                                            className="block py-2 hover:text-[#5a3e52] dark:hover:text-gray-200 px-3 text-lg font-medium"
+                                        >
                                             Create Product
                                         </Link>
                                     </li>
@@ -74,7 +51,6 @@ const Navbar = () => {
                         </Sheet>
                     </div>
                 </div>
-
             </div>
         </nav>
     );

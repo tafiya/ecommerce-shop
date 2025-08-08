@@ -1,7 +1,8 @@
 import Image from "next/image";
 import notFound from "../assets/not-found.jpg";
+import { FC } from "react";
 
-const NotFoundPage = () => {
+const NotFoundPage:FC = () => {
     return (
         <div className="flex justify-center items-center ">
             <Image

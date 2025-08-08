@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { toggleFavorite } from "@/redux/favoriteSlice";
 import Spinner from "../Spinner";
+import { getProducts } from "@/lib/api";
 
 const LIMIT = 10;
 const ProductsSection: FC = () => {
@@ -39,16 +40,14 @@ const ProductsSection: FC = () => {
     const fetchProducts = async () => {
         setLoading(true);
         try {
-            const res = await axios.get<{ products: IProduct[]; total: number }>(
-                `https://dummyjson.com/products?limit=${LIMIT}&skip=${skip}`
-            );
+            const data = await getProducts(LIMIT, skip);
             setProducts((prev) => {
                 const existingIds = new Set(prev.map((p) => p?.id));
-                const newProducts = res.data.products.filter((p) => !existingIds.has(p?.id));
+                const newProducts = data.products.filter((p) => !existingIds.has(p?.id));
                 return [...prev, ...newProducts];
             });
             setSkip((prev) => prev + LIMIT);
-            setHasMore(products.length + res.data.products.length < res.data.total);
+            setHasMore(products.length + data.products.length < data.total);
         } catch (err) {
             setError((err as Error).message);
         } finally {
